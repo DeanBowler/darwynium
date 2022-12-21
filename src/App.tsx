@@ -1,15 +1,19 @@
+import { useRef } from 'react';
 import './App.css';
 
-import { greet, add } from './native/pkg';
+import { WorldInstance } from './native/pkg';
 
 function App() {
+  const world = useRef(WorldInstance.new());
+
+  console.log(world);
+
   return (
     <div className="App">
       <h1>Darwynium</h1>
+      {/* <h2>Welcome to {world.current.get_name()}</h2> */}
       <div className="card">
-        <button onClick={() => greet(`visitor #${add(2, 4).toString()}`)}>
-          hollar
-        </button>
+        <button onClick={() => world.current.greet()}>hollar</button>
       </div>
     </div>
   );
